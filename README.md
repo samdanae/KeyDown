@@ -1,4 +1,6 @@
 # Nutshell
-Generate Markdown on the fly simply by defining your content in JSON. Relies on the text of the key/value pairs, so no need to learn any new syntax. 
+Generate Markdown on the fly simply by defining your content in JSON. 
 
-
+Output is based on the natural structure of the JSON data itself, so that means:
+- no markup needed
+- nothing new to learn
