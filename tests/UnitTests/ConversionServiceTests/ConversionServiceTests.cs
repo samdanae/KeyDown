@@ -17,11 +17,11 @@ public class ConverterTests
     
     [Theory]
     [MemberData(nameof(TestData.Convert_Throws_Exception_With_Invalid_Input_Data), MemberType= typeof(TestData))]
-    public void Convert_Outputs_Blank_With_Invalid_Input(string input, string expectedOutput)
+    public void Convert_Throws_Exception_With_Invalid_Input(string input)
     {
         IConversionService converter = new ConversionService();
 
-        var actual = converter.Convert(input);
-        actual.Should().Be(expectedOutput);
+        Action a = () => converter.Convert(input);
+        a.Should().Throw<SpanJson.JsonParserException>();
     }
 }

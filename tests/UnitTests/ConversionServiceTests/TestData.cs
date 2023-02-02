@@ -6,7 +6,7 @@ public class TestData
         new List<object[]>
         {
             new object[] { "{\"Name\": \"Samdanae Imran\"}", "# Name\nSamdanae Imran\n" },
-            new object[] { "{\"Name\": \"Samdanae Imran\", \"Occupation\": \"Software Engineer\"}", "# Name\nSamdanae Imran\n" },
+            new object[] { "{\"Name\": \"Samdanae Imran\", \"Occupation\": \"Software Engineer\"}", "# Name\nSamdanae Imran\n# Occupation\nSoftware Engineer\n" },
         };
     
     public static IEnumerable<object[]> Convert_Throws_Exception_With_Invalid_Input_Data =>
