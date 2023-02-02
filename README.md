@@ -35,6 +35,12 @@ Run the tests
   dotnet test
 ```
 
+## Tech Stack
+
+**JSON Deserialiser:** [SpanJson](https://github.com/Tornhoof/SpanJson) 🚀
+
+
+
 ## Authors
 
 - [@samdanae](https://www.github.com/samdanae)
