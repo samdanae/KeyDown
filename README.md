@@ -2,6 +2,7 @@
 
 ## Transform JSON into Easy-to-Read Markdown 
  
+### Json Input
 ```json
 {
   "Name": "John Doe",
@@ -13,7 +14,7 @@
 }
 ```
 
-results in
+### Markdown Output
 
 ```markdown
 # Name
