@@ -67,9 +67,9 @@ Follow these instructions to get set up to develop KeyDown locally. You'll need 
 
 ## Upcoming Features
 
-- JSON Array support
-- Link and Image rendering
-- Support for other nested key/value formats such as yaml
+- JSON Array support.
+- Link and Image rendering.
+- Support for other nested key/value formats such as yaml.
 
 ## Author
 
