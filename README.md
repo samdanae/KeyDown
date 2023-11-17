@@ -1,8 +1,8 @@
 # KeyDown
 
-## Transform JSON into Easy-to-Read Markdown 
- 
-### Json Input
+## Transform JSON into Easy-to-Read Markdown
+
+### Input
 ```json
 {
   "Name": "John Doe",
@@ -14,7 +14,7 @@
 }
 ```
 
-### Markdown Output
+### Output
 
 ```markdown
 # Name
@@ -34,7 +34,7 @@ ACME Enterprises
 
 ## How to Use the CLI Tool
 
-This solution comes with a simple command line tool. 
+This solution comes with a simple command line tool.
 
 The tool accepts a file containing json data and produces a file containing Markdown.
 
