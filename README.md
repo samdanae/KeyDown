@@ -43,7 +43,7 @@ KeyDown.Cli.exe -i .\input.json -o .\output.md
 ```
 
 
-## Local Development
+## Local Development 
 
 Follow these instructions to get set up to develop KeyDown locally. You'll need the .Net Core SDK.
 
