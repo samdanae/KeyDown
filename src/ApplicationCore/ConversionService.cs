@@ -1,41 +1,57 @@
 using System.Text;
+using System.Text.Json;
 
 namespace ApplicationCore;
-using SpanJson;
+
 public class ConversionService : IConversionService
 {
-    public string Convert(string jsonInput)
+    private static readonly string UpcomingHeadingNewLines = $"{Environment.NewLine}{Environment.NewLine}";
+
+    private static string ConvertToMarkdown(JsonElement element, int level)
     {
-        var deserialized = JsonSerializer.Generic.Utf16.Deserialize<Dictionary<string, string>>(jsonInput);
-        var sb = new StringBuilder();
-        foreach (var pair in deserialized)
+        var sb = new StringBuilder();   
+        var levelString = new string('#', level);
+        
+        foreach (var pair in element.EnumerateObject())
         {
-            sb.Append(ConvertToMarkdown(pair));
+            var key = pair.Name;
+            var value = pair.Value;
+            
+            switch (value.ValueKind)
+            {
+                // All recursive paths should hit a dead-end at these JsonValueKinds, so only append a newline here, and nowhere else.  
+                case JsonValueKind.String:
+                case JsonValueKind.Number:
+                case JsonValueKind.True:
+                case JsonValueKind.False:
+                    sb.Append($"{levelString} {key}{Environment.NewLine}{value}{UpcomingHeadingNewLines}");
+                    break;
+                case JsonValueKind.Object:
+                    sb.Append($"{levelString} {key}{UpcomingHeadingNewLines}{ConvertToMarkdown(value, level + 1)}");
+                    break;
+                case JsonValueKind.Undefined:
+                case JsonValueKind.Null:
+                    sb.Append($"{levelString} {key}{Environment.NewLine}{UpcomingHeadingNewLines}");
+                    break;
+                case JsonValueKind.Array:
+                    sb.Append($"{levelString} {key}{UpcomingHeadingNewLines}");
+                    var arrayEnumerator = value.EnumerateArray();
+                    foreach (var arrayElement in arrayEnumerator)
+                    {
+                        sb.Append(ConvertToMarkdown(arrayElement, level + 1));
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
+
         return sb.ToString();
     }
-    
-    private static string ConvertToMarkdown(KeyValuePair<string, string> kvp)
+
+    public string ConvertToMarkdown(string jsonInput)
     {
-        var key = kvp.Key;
-        var value = kvp.Value;
-        
-        return $"# {key}\n{value}\n";
+        var input = JsonSerializer.Deserialize<JsonElement>(jsonInput);
+        return ConvertToMarkdown(input, 1);
     }
-}
-
-
-// This JsonConstructorAttribute allows overwriting the matching names of the constructor parameter names to allow for different member names vs. constructor parameter names, order is important here
-public readonly struct NamedDo
-{
-    [JsonConstructor(nameof(Key), nameof(Value))]
-    public NamedDo(string first, string second)
-    {
-        Key = first;
-        Value = second;
-    }
-
-
-    public string Key { get; }
-    public string Value { get; }
 }

@@ -1,17 +1,37 @@
+# KeyDown 
+Generate readable markdown from json.
 
-# KeyDown
+## How it Works
+```json
+{
+  "Name": "John Doe",
+  "Employment Status": "Full-time",
+  "Company": {
+    "Name": "ACME Enterprises",
+    "Size": "200+"
+  }
+}
+```
 
-Generate Markdown (and beyond) simply by defining your content in plain objects. 
+results in
 
-Output is based on the natural structure of the state data itself, so that means there is no markup needed, nothing to learn - not even markdown.
+```markdown
+# Name
+John Doe
 
-## Overview
+# Employment Status
+Full-time
 
-[Markdown](https://daringfireball.net/projects/markdown/syntax) is great. It lets anyone express entire articles and documents in an easy to handle, readable syntax.
+# Company
 
-KeyDown is another spin on marking up content, but without any syntax. Its purpose is to represent objects using their naturally nested structure. 
+## Name
+ACME Enterprises
 
-KeyDown organises content into headings of varying levels based on how the object graph is nested.
+## Size
+200+
+
+
+```
 
 ## Run Locally
 

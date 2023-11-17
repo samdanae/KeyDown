@@ -6,22 +6,24 @@ namespace UnitTests.ConversionServiceTests;
 public class ConverterTests
 {
     [Theory]
-    [MemberData(nameof(TestData.Convert_Outputs_HeadingAndBody), MemberType= typeof(TestData))]
+    [MemberData(nameof(TestData.HeadingAndBodyTestCase), MemberType= typeof(TestData))]
+    [MemberData(nameof(TestData.NestedTestCase), MemberType= typeof(TestData))]
+    [MemberData(nameof(TestData.ArrayWithKeyTestCase), MemberType= typeof(TestData))]
     public void Convert_Outputs_HeadingAndBody(string input, string expectedOutput)
     {
         IConversionService converter = new ConversionService();
 
-        var actual = converter.Convert(input);
+        var actual = converter.ConvertToMarkdown(input);
         actual.Should().Be(expectedOutput);
     }
     
     [Theory]
-    [MemberData(nameof(TestData.Convert_Throws_Exception_With_Invalid_Input_Data), MemberType= typeof(TestData))]
+    [MemberData(nameof(TestData.InvalidInputData), MemberType= typeof(TestData))]
     public void Convert_Throws_Exception_With_Invalid_Input(string input)
     {
         IConversionService converter = new ConversionService();
 
-        Action a = () => converter.Convert(input);
-        a.Should().Throw<SpanJson.JsonParserException>();
+        Action a = () => converter.ConvertToMarkdown(input);
+        a.Should().Throw<System.Text.Json.JsonException>();
     }
 }

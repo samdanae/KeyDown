@@ -1,6 +1,6 @@
 ﻿namespace ApplicationCore;
 public interface IConversionService
 {
-    public string Convert(string jsonInput);
+    public string ConvertToMarkdown(string jsonInput);
 }
 
