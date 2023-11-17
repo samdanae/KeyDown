@@ -16,22 +16,11 @@ public class ConverterTests
         }
         
         var inputFile = Path.Combine(projectDirectory, "input", $"normal.json");
-        var outputFile = Path.Combine(projectDirectory, "actual", $"{uniqueFileName}.md");
-        var outputDirectory = Path.Combine(projectDirectory, "actual");
+        var outputFile = Path.Combine(Path.GetTempPath(), $"{uniqueFileName}.md");
         var expectedFile = Path.Combine(projectDirectory, "expected", $"normal.md");
 
         File.Exists(inputFile).Should().BeTrue();
         
-        if (File.Exists(outputFile))
-        {
-            File.Delete(outputFile);
-        }
-
-        if (!Directory.Exists(outputDirectory))
-        {
-            Directory.CreateDirectory(outputDirectory);
-        }
-
         var args = new[] { "-i", inputFile, "-o", outputFile };
         Program.Main(args);
 
