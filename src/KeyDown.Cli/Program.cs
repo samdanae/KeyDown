@@ -14,7 +14,7 @@ namespace KeyDown.Cli
             public string? OutputFile { get; set; }
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args).WithParsed(o =>
                 {
