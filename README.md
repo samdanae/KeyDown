@@ -1,4 +1,4 @@
-# KeyDown
+# KVDown
 
 ## Transform JSON into Easy-to-Read Markdown
 
@@ -39,7 +39,7 @@ This solution comes with a simple command line tool.
 The tool accepts a file containing json data and produces a file containing Markdown.
 
 ``` bash
-KeyDown.Cli.exe -i .\input.json -o .\output.md
+path\to\KeyDown.Cli.exe -i .\input.json -o .\output.md
 ```
 
 
@@ -67,8 +67,7 @@ Follow these instructions to get set up to develop KeyDown locally. You'll need 
 
 ## Upcoming Features
 
-- JSON Array support.
-- Link and Image rendering.
+- Smart link and image rendering.
 - Support for other nested key/value formats such as yaml.
 
 ## Author
