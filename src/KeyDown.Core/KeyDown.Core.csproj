@@ -7,9 +7,4 @@
     <RootNamespace>ApplicationCore</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="SpanJson" Version="4.0.0" />
-  </ItemGroup>
-
 </Project>
